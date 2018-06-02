@@ -1,0 +1,111 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  eval = TRUE
+)
+options(width = 100)
+polcom <- tidyversity::polcom
+```
+# tidyreg 
+<!--<img src="man/figures/logo.png" width="160px" align="right" /> -->
+
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
+🎓 Tidy tools for academics
+
+
+## \*\*\* This package is in very early development. Feedback is encouraged!!! \*\*\*
+
+## Installation
+
+<!-- You can install the released version of tidyreg from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("tidyreg")
+```
+-->
+
+Install the development version from [Github](https://github.com/mkearney/tidyreg) with:
+
+```{r install, eval=FALSE}
+## install devtools if not already
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+## install tidyreg from Github
+devtools::install_github("mkearney/tidyreg")
+```
+
+Load the package (it, of course, plays nicely with tidyverse).
+
+```{r library}
+## load tidyverse
+library(tidyverse)
+
+## load tidyreg
+library(tidyreg)
+```
+
+## Regression models
+
+### Ordinary Least Squares (OLS)
+
+Conduct an Ordinary Least Squares (OLS) regression analysis.
+
+```{r ols}
+polcom %>%
+  tidy_regression(follow_trump ~ news_1 + ambiv_sexism_1) %>%
+  tidy_summary()
+```
+
+### Logistic (dichotomous)
+
+Conduct a logistic regression analysis for binary (dichotomous) outcomes.
+
+```{r logistic}
+polcom %>%
+  tidy_regression(follow_trump ~ news_1 + ambiv_sexism_1, type = "logistic") %>%
+  tidy_summary()
+```
+
+### Poisson (count)
+
+Conduct a poisson regression analysis for count data.
+
+```{r poisson}
+polcom %>%
+  mutate(polarize = abs(therm_1 - therm_2)) %>%
+  tidy_regression(polarize ~ news_1 + ambiv_sexism_1, type = "poisson") %>%
+  tidy_summary()
+```
+
+### Negative binomial (overdispersed)
+
+Conduct a negative binomial regression analysis for overdispersed count data.
+
+```{r, negbinom}
+polcom %>%
+  mutate(polarize = abs(therm_1 - therm_2)) %>%
+  tidy_regression(polarize ~ news_1 + ambiv_sexism_1, type = "negbinom") %>%
+  tidy_summary()
+```
+
+### Robust and quasi- models
+
+```{r, robust_glm}
+polcom %>%
+  mutate(polarize = abs(therm_1 - therm_2)) %>%
+  tidy_regression(polarize ~ news_1 + ambiv_sexism_1, 
+    type = "quasipoisson", robust = TRUE) %>%
+  tidy_summary()
+```
+

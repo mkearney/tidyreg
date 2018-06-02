@@ -1,0 +1,10 @@
+Package: tidyreg
+Version: 0.0.0.9000
+Title: Tidy Regression
+Description: Tools for tidy regression analysis.
+Authors@R: person("First", "Last", , "first.last@example.com", c("aut", "cre"))
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+RoxygenNote: 6.0.1.9000

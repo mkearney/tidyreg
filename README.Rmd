@@ -15,8 +15,7 @@ knitr::opts_chunk$set(
 options(width = 100)
 polcom <- tidyversity::polcom
 ```
-# tidyreg 
-<!--<img src="man/figures/logo.png" width="160px" align="right" /> -->
+# tidyreg <img src="man/figures/logo.png" width="160px" align="right" /> 
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 

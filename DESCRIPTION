@@ -1,10 +1,25 @@
 Package: tidyreg
-Version: 0.0.0.9000
-Title: Tidy Regression
-Description: Tools for tidy regression analysis.
-Authors@R: person("First", "Last", , "first.last@example.com", c("aut", "cre"))
-License: What license it uses
+Version: 0.0.1
+Title: Tidy Regression Tools for Academics
+Description: Tidy tools designed for use in multilevel modeling used for 
+  academic research. This package uses tidy evaluation (a form of
+  non-standard evaluation) for ease of use and helps researchers keep their
+  data and analysis tidy.
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
+Author: person("Michael Wayne", "Kearney", ,
+  "kearneymw@missouri.edu", role = c("aut", "cre"),
+  comment = c(ORCID = "0000-0002-0730-4694"))
+License: MIT + file LICENSE
 RoxygenNote: 6.0.1.9000
+Imports: 
+    broom,
+    magrittr,
+    MASS,
+    psych,
+    rlang,
+    robust,
+    robustlmm,
+    tibble,
+    tidyselect
